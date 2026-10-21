@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Básico para Google -->
-    <title>Dystra Games | Estudio Indie de Videojuegos</title>
-    <meta name="description" content="Sitio oficial de Dystra Games. Estudio independiente enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
-    <meta name="keywords" content="Dystra Games, juegos indie, indie game studio, desarrollo de videojuegos, Unity">
+    <title>Dystra Games | Estudio de Videojuegos</title>
+    <meta name="description" content="Sitio oficial de Dystra Games. Estudio enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
+    <meta name="keywords" content="Dystra Games, desarrollo de videojuegos, juegos, Unity, SOK">
     <meta name="author" content="Dystra Games">
     
-    <!-- Carga de Tailwind CSS para el diseño visual -->
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white antialiased">
 
     <!-- Encabezado / Navegación -->
-    <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+    <header class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+            <a href="#" class="text-2xl font-black tracking-wider bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
                 DYSTRA GAMES
             </a>
-            <nav class="space-x-6 text-sm font-medium text-slate-300">
+            <nav class="space-x-8 text-sm font-medium text-slate-300">
                 <a href="#inicio" class="hover:text-indigo-400 transition-colors">Inicio</a>
                 <a href="#proyectos" class="hover:text-indigo-400 transition-colors">Proyectos</a>
                 <a href="#contacto" class="hover:text-indigo-400 transition-colors">Contacto</a>
@@ -30,29 +30,37 @@
     </header>
 
     <!-- Sección Principal (Hero) -->
-    <main id="inicio" class="max-w-4xl mx-auto px-6 py-20 text-center flex-grow flex flex-col justify-center items-center">
-        <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-950/60 border border-indigo-800/50 rounded-full mb-6">
-            Estudio Indie Oficial
-        </span>
+    <main id="inicio" class="max-w-4xl mx-auto px-6 py-16 flex-grow flex flex-col justify-center items-center">
         
-        <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed">
-            Bienvenido a la página oficial de <strong class="text-slate-200">Dystra Games</strong>. Somos un estudio independiente dedicado al diseño y desarrollo de experiencias inmersivas en videojuegos.
+        <!-- Insignia de Estado -->
+        <div class="inline-flex items-center space-x-2 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-indigo-300 bg-indigo-950/50 border border-indigo-800/40 rounded-full mb-8 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+            <span>Estudio Oficial</span>
+        </div>
+        
+        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl text-center mb-12 leading-relaxed font-light">
+            Bienvenido a la página oficial de <strong class="text-white font-semibold">Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de experiencias inmersivas en videojuegos.
         </p>
 
         <!-- Tarjeta del Proyecto Activo -->
-        <section id="proyectos" class="w-full bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-left mt-4 shadow-xl">
-            <div class="flex items-center space-x-3 mb-4">
-                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-                <h2 class="text-sm font-bold uppercase tracking-wider text-emerald-400">En Desarrollo</h2>
+        <section id="proyectos" class="w-full bg-gradient-to-b from-slate-900/80 to-slate-900/40 border border-slate-800/90 rounded-2xl p-8 sm:p-10 shadow-2xl relative overflow-hidden group">
+            
+            <!-- Resplandor decorativo de fondo -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-400">En Desarrollo</h2>
             </div>
             
-            <h3 class="text-2xl font-bold text-white mb-2">Proyecto Medieval - SOK</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Proyecto Medieval - SOK</h3>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 max-w-3xl">
                 Actualmente estamos trabajando en nuestro primer título principal: una experiencia en mundo abierto medieval, con sistemas de combate dinámico, exploración y mecánicas avanzadas.
             </p>
             
-            <div class="inline-block px-4 py-2 bg-slate-800 text-slate-300 text-xs font-mono rounded-md border border-slate-700">
-                Próximamente: devlogs de desarrollo.
+            <div class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-950/80 text-slate-400 text-xs font-mono rounded-lg border border-slate-800">
+                <span class="text-indigo-400">⚡</span>
+                <span>Próximamente: devlogs de desarrollo</span>
             </div>
         </section>
     </main>
@@ -62,8 +70,8 @@
         <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-slate-500 text-xs gap-4">
             <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
             
-            <div class="flex space-x-6 text-slate-400">
-                <!-- Cambia el # por los links reales de tus redes -->
+            <div class="flex space-x-6 text-slate-400 font-medium">
+                <!-- Reemplaza los '#' con las URL reales cuando las tengas -->
                 <a href="#" class="hover:text-indigo-400 transition-colors">Steam</a>
                 <a href="#" class="hover:text-indigo-400 transition-colors">Kick</a>
                 <a href="#" class="hover:text-indigo-400 transition-colors">YouTube</a>
