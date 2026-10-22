@@ -1,0 +1,30 @@
+/* Estilos globales y personalizados para Dystra Games */
+
+/* Desplazamiento suave para los enlaces de navegación (#inicio, #proyectos, etc.) */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #0a0e16; /* Fondo oscuro */
+    color: #f1f5f9; /* Texto claro */
+    font-family: system-ui, -apple-system, sans-serif; /* Fuente sans-serif */
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efecto de resplandor decorativo para la tarjeta de proyecto */
+.glow-bg {
+    position: absolute;
+    top: -6rem;
+    right: -6rem;
+    width: 12rem;
+    height: 12rem;
+    background-color: rgba(99, 102, 241, 0.1); /* Indigo con opacidad */
+    border-radius: 9999px;
+    filter: blur(48px);
+    pointer-events: none;
+}
+

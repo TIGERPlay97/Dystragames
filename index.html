@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Básico para Google -->
-    <title>Dystra Games | Estudio de Videojuegos</title>
+    <!-- SEO Básico -->
+    <title>Dystra Games</title>
     <meta name="description" content="Sitio oficial de Dystra Games. Estudio enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
     <meta name="keywords" content="Dystra Games, desarrollo de videojuegos, juegos, Unity, SOK">
     <meta name="author" content="Dystra Games">
     
-    <!-- Carga de Tailwind CSS -->
+    <!-- Framework Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white antialiased">
+<body>
 
     <!-- Encabezado / Navegación -->
     <header class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-md sticky top-0 z-50">
@@ -30,26 +33,19 @@
     </header>
 
     <!-- Sección Principal (Hero) -->
-    <main id="inicio" class="max-w-4xl mx-auto px-6 py-16 flex-grow flex flex-col justify-center items-center">
-        
-        <!-- Insignia de Estado -->
-        <div class="inline-flex items-center space-x-2 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-indigo-300 bg-indigo-950/50 border border-indigo-800/40 rounded-full mb-8 shadow-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
-            <span>Estudio Oficial</span>
-        </div>
+    <main id="inicio" class="max-w-4xl mx-auto px-6 py-16 flex-grow flex flex-col justify-center items-center w-full">
         
         <p class="text-lg sm:text-xl text-slate-300 max-w-2xl text-center mb-12 leading-relaxed font-light">
-            Bienvenido a la página oficial de <strong class="text-white font-semibold">Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de experiencias inmersivas en videojuegos.
+            Bienvenido a la página oficial de <strong class="text-white font-semibold">Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de videojuegos.
         </p>
 
         <!-- Tarjeta del Proyecto Activo -->
         <section id="proyectos" class="w-full bg-gradient-to-b from-slate-900/80 to-slate-900/40 border border-slate-800/90 rounded-2xl p-8 sm:p-10 shadow-2xl relative overflow-hidden group">
             
             <!-- Resplandor decorativo de fondo -->
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="glow-bg"></div>
 
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <div class="mb-6">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-400">En Desarrollo</h2>
             </div>
             
@@ -59,25 +55,19 @@
             </p>
             
             <div class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-950/80 text-slate-400 text-xs font-mono rounded-lg border border-slate-800">
-                <span class="text-indigo-400">⚡</span>
                 <span>Próximamente: devlogs de desarrollo</span>
             </div>
         </section>
     </main>
 
-    <!-- Pie de página / Redes / Contacto -->
+    <!-- Pie de página / Contacto -->
     <footer id="contacto" class="border-t border-slate-800/80 bg-slate-900/30 py-8">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center items-center text-slate-500 text-xs">
             <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
-            
-            <div class="flex space-x-6 text-slate-400 font-medium">
-                <!-- Reemplaza los '#' con las URL reales cuando las tengas -->
-                <a href="#" class="hover:text-indigo-400 transition-colors">Steam</a>
-                <a href="#" class="hover:text-indigo-400 transition-colors">Kick</a>
-                <a href="#" class="hover:text-indigo-400 transition-colors">YouTube</a>
-            </div>
         </div>
     </footer>
 
+    <!-- Lógica de JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
