@@ -18,57 +18,78 @@
 </head>
 <body>
 
-    <!-- Encabezado / Navegación (Alineado completo a los extremos) -->
-    <header class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-md sticky top-0 z-50">
-        <div class="w-full px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black tracking-wider bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-300 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
-                DYSTRA GAMES
-            </a>
-            <nav class="space-x-8 text-sm font-medium text-slate-300">
-                <a href="#inicio" class="hover:text-indigo-400 transition-colors">Inicio</a>
-                <a href="#proyectos" class="hover:text-indigo-400 transition-colors">Proyectos</a>
-                <a href="#contacto" class="hover:text-indigo-400 transition-colors">Contacto</a>
+    <!-- Encabezado / Navegación Principal -->
+    <header class="header-main">
+        <div class="header-container">
+            <a href="#" class="logo-text">DYSTRA GAMES</a>
+
+            <!-- Botón Hamburguesa -->
+            <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navegación Escritorio -->
+            <nav class="nav-desktop">
+                <a href="#inicio">Inicio</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
             </nav>
         </div>
     </header>
 
+    <!-- Fondo Oscuro para el Menú Lateral en Móviles -->
+    <div id="overlay-menu" class="menu-overlay"></div>
+
+    <!-- Menú Lateral Desplegable (Drawer - Estilo YouTube / Máximo 80% ancho) -->
+    <aside id="sidebar-menu" class="sidebar-drawer">
+        <div class="sidebar-header">
+            <span class="logo-text text-lg">DYSTRA GAMES</span>
+            <button id="btn-close-menu" class="btn-close">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#inicio" class="sidebar-link">Inicio</a>
+            <a href="#proyectos" class="sidebar-link">Proyectos</a>
+            <a href="#contacto" class="sidebar-link">Contacto</a>
+        </nav>
+    </aside>
+
     <!-- Sección Principal (Hero) -->
-    <main id="inicio" class="w-full max-w-6xl mx-auto px-6 py-16 flex-grow flex flex-col justify-center items-center">
-        
-        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl text-center mb-12 leading-relaxed font-light">
-            Bienvenido a la página oficial de <strong class="text-white font-semibold">Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de videojuegos.
+    <main id="inicio" class="main-container">
+        <p class="hero-description">
+            Bienvenido a la página oficial de <strong>Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de videojuegos.
         </p>
 
         <!-- Sección de Proyectos -->
         <section id="proyectos" class="w-full">
-            <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
-                <h2 class="text-xl font-bold tracking-tight text-white">PROYECTOS DESTACADOS</h2>
-                <span class="text-xs font-mono text-slate-500 uppercase">Catálogo de títulos</span>
+            <div class="section-header">
+                <h2>PROYECTOS DESTACADOS</h2>
+                <span>Catálogo de títulos</span>
             </div>
 
-            <!-- Contenedor donde JavaScript insertará las tarjetas automáticamente -->
-            <div id="contenedor-proyectos" class="flex flex-col gap-8 w-full">
-                <!-- Se genera dinámicamente con JS -->
+            <!-- Contenedor donde JavaScript insertará las tarjetas -->
+            <div id="contenedor-proyectos" class="projects-list">
+                <!-- Generado dinámicamente -->
             </div>
         </section>
     </main>
 
-    <!-- Pie de página Estilo Estudio Profesional -->
-    <footer id="contacto" class="border-t border-slate-800/80 bg-slate-900/40 py-10 mt-16">
-        <div class="w-full px-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-6">
-            
-            <div class="flex flex-col gap-2 text-left">
-                <span class="font-bold tracking-wider text-slate-400">DYSTRA GAMES STUDIO</span>
+    <!-- Pie de página -->
+    <footer id="contacto" class="footer-main">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span>DYSTRA GAMES STUDIO</span>
                 <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
             </div>
 
-            <nav class="flex space-x-6 text-slate-400 font-medium">
-                <a href="#inicio" class="hover:text-indigo-400 transition-colors">Inicio</a>
-                <a href="#proyectos" class="hover:text-indigo-400 transition-colors">Juegos</a>
-                <a href="#contacto" class="hover:text-indigo-400 transition-colors">Contacto</a>
+            <nav class="footer-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#proyectos">Juegos</a>
+                <a href="#contacto">Contacto</a>
             </nav>
 
-            <div class="text-right text-slate-500 font-mono text-xs">
+            <div class="footer-info">
                 <span>Official Site</span>
             </div>
         </div>
