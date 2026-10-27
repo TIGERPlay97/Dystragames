@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Básico -->
     <title>Dystra Games</title>
     <meta name="description" content="Sitio oficial de Dystra Games. Estudio enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
     <meta name="keywords" content="Dystra Games, desarrollo de videojuegos, juegos, Unity, SOK">
     <meta name="author" content="Dystra Games">
-    
-    <!-- Framework Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#05080f">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dystragames.com/">
+
+    <!-- Icono de la pestaña (temporal, reemplazar cuando exista el logo) -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Open Graph (al compartir en redes y mensajería) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Dystra Games">
+    <meta property="og:title" content="Dystra Games">
+    <meta property="og:description" content="Sitio oficial de Dystra Games. Estudio enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
+    <meta property="og:url" content="https://dystragames.com/">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Dystra Games">
+    <meta name="twitter:description" content="Sitio oficial de Dystra Games. Estudio enfocado en el desarrollo de videojuegos de aventura y mundo abierto.">
+
+    <!-- Datos estructurados: le dicen a Google que Dystra Games es una organización -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dystra Games",
+        "url": "https://dystragames.com/",
+        "description": "Estudio de desarrollo de videojuegos de aventura y mundo abierto."
+    }
+    </script>
+
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="styles.css">
@@ -21,32 +51,32 @@
     <!-- Encabezado / Navegación Principal -->
     <header class="header-main">
         <div class="header-container">
-            <a href="#" class="logo-text">DYSTRA GAMES</a>
-
-            <!-- Botón Hamburguesa -->
-            <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+            <a href="#inicio" class="logo-text">Dystra Games</a>
 
             <!-- Navegación Escritorio -->
-            <nav class="nav-desktop">
+            <nav class="nav-desktop" aria-label="Principal">
                 <a href="#inicio">Inicio</a>
                 <a href="#proyectos">Proyectos</a>
                 <a href="#contacto">Contacto</a>
             </nav>
+
+            <!-- Botón Hamburguesa -->
+            <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"></path>
+                </svg>
+            </button>
         </div>
     </header>
 
     <!-- Fondo Oscuro para el Menú Lateral en Móviles -->
     <div id="overlay-menu" class="menu-overlay"></div>
 
-    <!-- Menú Lateral Desplegable (Drawer - Estilo YouTube / Máximo 80% ancho) -->
-    <aside id="sidebar-menu" class="sidebar-drawer">
+    <!-- Menú Lateral Desplegable (Drawer - Máximo 80% ancho) -->
+    <aside id="sidebar-menu" class="sidebar-drawer" aria-label="Menú">
         <div class="sidebar-header">
-            <span class="logo-text text-lg">DYSTRA GAMES</span>
-            <button id="btn-close-menu" class="btn-close">&times;</button>
+            <span class="logo-text">Dystra Games</span>
+            <button id="btn-close-menu" class="btn-close" aria-label="Cerrar menú">&times;</button>
         </div>
         <nav class="sidebar-nav">
             <a href="#inicio" class="sidebar-link">Inicio</a>
@@ -55,16 +85,24 @@
         </nav>
     </aside>
 
-    <!-- Sección Principal (Hero) -->
-    <main id="inicio" class="main-container">
-        <p class="hero-description">
-            Bienvenido a la página oficial de <strong>Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de videojuegos.
-        </p>
+    <main>
+        <!-- Sección Principal (Hero) -->
+        <section id="inicio" class="hero">
+            <!-- Espacio reservado para imagen o video de fondo -->
+            <div class="hero-media"></div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Dystra Games</h1>
+                <p class="hero-description">
+                    Bienvenido a la página oficial de <strong>Dystra Games</strong>. Nos dedicamos al diseño y desarrollo de videojuegos.
+                </p>
+            </div>
+        </section>
 
         <!-- Sección de Proyectos -->
-        <section id="proyectos" class="w-full">
+        <section id="proyectos" class="section-container">
             <div class="section-header">
-                <h2>PROYECTOS DESTACADOS</h2>
+                <h2>Proyectos destacados</h2>
                 <span>Catálogo de títulos</span>
             </div>
 
@@ -79,11 +117,11 @@
     <footer id="contacto" class="footer-main">
         <div class="footer-container">
             <div class="footer-brand">
-                <span>DYSTRA GAMES STUDIO</span>
+                <span>Dystra Games Studio</span>
                 <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
             </div>
 
-            <nav class="footer-nav">
+            <nav class="footer-nav" aria-label="Pie de página">
                 <a href="#inicio">Inicio</a>
                 <a href="#proyectos">Juegos</a>
                 <a href="#contacto">Contacto</a>

@@ -9,7 +9,9 @@ const listaProyectos = [
         motor: "Unity 6 HDRP",
         descripcion: "Actualmente estamos trabajando en nuestro primer título principal: una experiencia en mundo abierto medieval, con sistemas de combate dinámico, exploración y mecánicas avanzadas.",
         nota: "Próximamente: devlogs de desarrollo",
-        linkVerMas: "#"
+        linkVerMas: "#",
+        // Cuando tengas imagen o video, escribe aquí la ruta. Ej: "img/sok.jpg"
+        imagen: ""
     }
 ];
 
@@ -41,27 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlayMenu) overlayMenu.addEventListener('click', cerrarMenu);
 
     // Cerrar el menú al hacer clic en cualquiera de sus enlaces
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', cerrarMenu);
+    sidebarLinks.forEach(link => link.addEventListener('click', cerrarMenu));
+
+    // Cerrar el menú con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') cerrarMenu();
     });
 
     // 2. Cargar Proyectos
     renderizarProyectos();
 
-    // 3. Sombra dinámica en la barra superior
+    // 3. Fondo dinámico en la barra superior al hacer scroll
     const header = document.querySelector('.header-main');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
-            header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.3)';
-        } else {
-            header.style.backgroundColor = 'rgba(15, 23, 42, 0.6)';
-            header.style.boxShadow = 'none';
-        }
-    });
+    function actualizarHeader() {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', actualizarHeader, { passive: true });
+    actualizarHeader();
 });
 
-// Renderizar tarjetas con efecto Zoom y Aclarado al pasar el ratón
+// Renderizar tarjetas de proyectos
 function renderizarProyectos() {
     const contenedor = document.getElementById('contenedor-proyectos');
     if (!contenedor) return;
@@ -69,37 +70,32 @@ function renderizarProyectos() {
     contenedor.innerHTML = '';
 
     listaProyectos.forEach(proyecto => {
-        const tarjeta = document.createElement('div');
-        
-        tarjeta.className = "w-full bg-slate-900/50 border border-slate-800/90 rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row gap-8 justify-between items-stretch transition-all duration-300 hover:scale-[1.01] hover:bg-slate-800/70 hover:border-slate-700 cursor-pointer";
+        const tarjeta = document.createElement('article');
+        tarjeta.className = 'project-card';
+
+        const media = proyecto.imagen
+            ? `<img src="${proyecto.imagen}" alt="${proyecto.titulo}" loading="lazy">`
+            : '';
 
         tarjeta.innerHTML = `
-            <!-- LADO IZQUIERDO: Información -->
-            <div class="flex-1 flex flex-col justify-between z-10">
+            <!-- LADO IZQUIERDO: Imagen / Video -->
+            <div class="project-media">${media}</div>
+
+            <!-- LADO DERECHO: Información -->
+            <div class="project-body">
                 <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-800/30">
-                            ${proyecto.estado}
-                        </span>
-                        <span class="text-xs font-mono text-slate-500">${proyecto.motor}</span>
+                    <div class="project-meta">
+                        <span class="project-status">${proyecto.estado}</span>
+                        <span class="project-engine">${proyecto.motor}</span>
                     </div>
-                    
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
-                        ${proyecto.titulo}
-                    </h3>
-                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-8">
-                        ${proyecto.descripcion}
-                    </p>
+
+                    <h3 class="project-title">${proyecto.titulo}</h3>
+                    <p class="project-text">${proyecto.descripcion}</p>
                 </div>
 
-                <div class="pt-4 border-t border-slate-800/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <span class="text-xs font-mono text-slate-400 bg-slate-950/80 px-3 py-1.5 rounded-md border border-slate-800">
-                        ${proyecto.nota}
-                    </span>
-                    
-                    <button onclick="verDetalleProyecto('${proyecto.id}')" class="w-full sm:w-auto px-6 py-2.5 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 rounded-lg text-xs font-semibold tracking-wider transition-all duration-200">
-                        VER MÁS
-                    </button>
+                <div class="project-footer">
+                    <span class="project-note">${proyecto.nota}</span>
+                    <button class="project-btn" onclick="verDetalleProyecto('${proyecto.id}')">Ver más</button>
                 </div>
             </div>
         `;
