@@ -18,13 +18,13 @@ const listaProyectos = [
 // Menú: se escribe una sola vez y aparece igual en todas las páginas.
 // "pagina" debe coincidir con el data-pagina del <body> para marcar la página actual.
 const enlacesMenu = [
-    { texto: "Inicio",    href: "./",             pagina: "inicio" },
-    { texto: "Proyectos", href: "proyectos.html", pagina: "proyectos" },
+    { texto: "Inicio",    href: "/",           pagina: "inicio" },
+    { texto: "Proyectos", href: "/proyectos/", pagina: "proyectos" },
     { texto: "Contacto",  href: "#contacto",      pagina: "contacto" }
 ];
 const enlacesPie = [
-    { texto: "Inicio",   href: "./" },
-    { texto: "Juegos",   href: "proyectos.html" },
+    { texto: "Inicio",   href: "/" },
+    { texto: "Juegos",   href: "/proyectos/" },
     { texto: "Contacto", href: "#contacto" }
 ];
 
@@ -39,7 +39,7 @@ function construirLayout() {
     if (header) header.outerHTML = `
         <header class="header-main">
             <div class="header-container">
-                <a href="./" class="logo-text">Dystra Games</a>
+                <a href="/" class="logo-text">Dystra Games</a>
                 <nav class="nav-desktop" aria-label="Principal">${enlaces()}</nav>
                 <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
                     <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,20 +154,21 @@ function renderizarProyectos() {
                 </div>
                 <div class="project-footer">
                     <span class="project-note">${p.nota}</span>
-                    <a class="project-btn" href="proyecto.html?id=${p.id}">Ver más</a>
+                    <a class="project-btn" href="/proyectos/${p.id}/">Ver más</a>
                 </div>
             </div>
         </article>`).join('');
 }
 
-// Página de detalle: lee el "?id=sok" de la dirección y busca ese proyecto en la lista.
+// Página de detalle: cada /proyectos/<id>/ tiene su HTML con data-proyecto="<id>".
+// Aquí se lee ese id y se busca el proyecto en la lista.
 function renderizarDetalle() {
     const contenedor = document.getElementById('detalle-proyecto');
     if (!contenedor) return;
 
-    const id = new URLSearchParams(location.search).get('id');
+    const id = document.body.dataset.proyecto;
     const p = listaProyectos.find(x => x.id === id);
-    if (!p) { location.replace('proyectos.html'); return; }
+    if (!p) { location.replace('/proyectos/'); return; }
 
     document.title = `${p.titulo} | Dystra Games`;
     contenedor.innerHTML = `
