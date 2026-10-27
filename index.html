@@ -46,44 +46,10 @@
     <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-pagina="inicio">
 
-    <!-- Encabezado / Navegación Principal -->
-    <header class="header-main">
-        <div class="header-container">
-            <a href="#inicio" class="logo-text">Dystra Games</a>
-
-            <!-- Navegación Escritorio -->
-            <nav class="nav-desktop" aria-label="Principal">
-                <a href="#inicio">Inicio</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-
-            <!-- Botón Hamburguesa -->
-            <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"></path>
-                </svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- Fondo Oscuro para el Menú Lateral en Móviles -->
-    <div id="overlay-menu" class="menu-overlay"></div>
-
-    <!-- Menú Lateral Desplegable (Drawer - Máximo 80% ancho) -->
-    <aside id="sidebar-menu" class="sidebar-drawer" aria-label="Menú">
-        <div class="sidebar-header">
-            <span class="logo-text">Dystra Games</span>
-            <button id="btn-close-menu" class="btn-close" aria-label="Cerrar menú">&times;</button>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="#inicio" class="sidebar-link">Inicio</a>
-            <a href="#proyectos" class="sidebar-link">Proyectos</a>
-            <a href="#contacto" class="sidebar-link">Contacto</a>
-        </nav>
-    </aside>
+    <!-- Header, overlay y menú lateral: los inserta script.js -->
+    <div id="layout-header"></div>
 
     <main>
         <!-- Sección Principal (Hero) -->
@@ -113,25 +79,8 @@
         </section>
     </main>
 
-    <!-- Pie de página -->
-    <footer id="contacto" class="footer-main">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <span>Dystra Games Studio</span>
-                <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
-            </div>
-
-            <nav class="footer-nav" aria-label="Pie de página">
-                <a href="#inicio">Inicio</a>
-                <a href="#proyectos">Juegos</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-
-            <div class="footer-info">
-                <span>Official Site</span>
-            </div>
-        </div>
-    </footer>
+    <!-- Pie de página: lo inserta script.js -->
+    <div id="layout-footer"></div>
 
     <!-- Lógica de JavaScript -->
     <script src="script.js"></script>
