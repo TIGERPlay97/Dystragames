@@ -13,20 +13,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
-<body data-pagina="proyectos" data-proyecto="sok">
+<body data-pagina="proyectos">
 
     <div id="layout-header"></div>
 
     <main>
         <section class="section-container interior">
             <a class="back-link" href="/proyectos/">&larr; Proyectos</a>
-            <!-- script.js busca el proyecto con el id de data-proyecto y lo dibuja aquí -->
+            <!-- script.js saca el juego de la dirección (/proyectos/sok/ -> sok) y lo dibuja aquí -->
             <div id="detalle-proyecto" class="detail"></div>
         </section>
     </main>
 
     <div id="layout-footer"></div>
 
+    <script src="datos.js"></script>
+    <script src="/datos/proyectos.js"></script>
     <script src="/script.js"></script>
 </body>
 </html>

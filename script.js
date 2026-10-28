@@ -1,19 +1,8 @@
 // Dystra Games - Script Principal
 
 // ---------- 1. DATOS ----------
-// Base de datos local de proyectos. Para agregar un juego, copia un bloque y cambia el id.
-const listaProyectos = [
-    {
-        id: "sok",
-        titulo: "Proyecto - SOK",
-        estado: "En Desarrollo",
-        motor: "Unity 6 HDRP",
-        descripcion: "Actualmente estamos trabajando en nuestro primer título principal: una experiencia en mundo abierto medieval, con sistemas de combate dinámico, exploración y mecánicas avanzadas.",
-        nota: "Próximamente: devlogs de desarrollo",
-        destacado: true,   // true = aparece también en el inicio
-        imagen: ""         // ruta de imagen, ej: "img/sok.jpg"
-    }
-];
+// La lista de juegos vive en /datos/proyectos.js (se carga antes que este archivo).
+// La información extensa de cada juego vive en /proyectos/<id>/datos.js (const JUEGO).
 
 // Menú: se escribe una sola vez y aparece igual en todas las páginas.
 // "pagina" debe coincidir con el data-pagina del <body> para marcar la página actual.
@@ -150,7 +139,7 @@ function renderizarProyectos() {
                         <span class="project-engine">${p.motor}</span>
                     </div>
                     <h3 class="project-title">${p.titulo}</h3>
-                    <p class="project-text">${p.descripcion}</p>
+                    <p class="project-text">${p.resumen}</p>
                 </div>
                 <div class="project-footer">
                     <span class="project-note">${p.nota}</span>
@@ -160,15 +149,53 @@ function renderizarProyectos() {
         </article>`).join('');
 }
 
-// Página de detalle: cada /proyectos/<id>/ tiene su HTML con data-proyecto="<id>".
-// Aquí se lee ese id y se busca el proyecto en la lista.
+// ---------- Página de detalle ----------
+// Cada /proyectos/<id>/ tiene su index.html (igual para todos) y su datos.js (const JUEGO).
+// El id sale de la propia dirección: /proyectos/sok/ -> "sok".
+function crearBloque(b) {
+    switch (b.tipo) {
+        case 'texto':
+            return `<p class="bloque-texto">${b.contenido}</p>`;
+        case 'imagen':
+            return `<img class="bloque-imagen" src="${b.src}" alt="${b.alt || ''}" loading="lazy">`;
+        case 'video':
+            return crearVideo(b.src, b.titulo);
+        default:
+            return '';
+    }
+}
+
+// Video de YouTube (o similar) con proporción 16:9. "src" es el enlace embed.
+function crearVideo(src, titulo = 'Video') {
+    return `<div class="bloque-video">
+        <iframe src="${src}" title="${titulo}" loading="lazy" allowfullscreen
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </div>`;
+}
+
+function crearNovedad(n) {
+    return `
+        <article class="novedad">
+            <div class="novedad-cabecera">
+                <time>${n.fecha}</time>
+                <h3>${n.titulo}</h3>
+            </div>
+            ${(n.bloques || []).map(crearBloque).join('')}
+        </article>`;
+}
+
 function renderizarDetalle() {
     const contenedor = document.getElementById('detalle-proyecto');
     if (!contenedor) return;
 
-    const id = document.body.dataset.proyecto;
+    const id = location.pathname.split('/').filter(Boolean)[1];
     const p = listaProyectos.find(x => x.id === id);
     if (!p) { location.replace('/proyectos/'); return; }
+
+    // JUEGO viene de /proyectos/<id>/datos.js. Si falta, la página se muestra igual con lo básico.
+    const j = (typeof JUEGO !== 'undefined') ? JUEGO : {};
+    const novedades = j.novedades || [];
+    const galeria = j.galeria || [];
 
     document.title = `${p.titulo} | Dystra Games`;
     contenedor.innerHTML = `
@@ -179,9 +206,12 @@ function renderizarDetalle() {
                 <span class="project-engine">${p.motor}</span>
             </div>
             <h1 class="project-title">${p.titulo}</h1>
-            <p class="project-text">${p.descripcion}</p>
+            <p class="project-text">${j.descripcion || p.resumen}</p>
             <div class="project-footer"><span class="project-note">${p.nota}</span></div>
-        </div>`;
+        </div>
+        ${j.trailer ? crearVideo(j.trailer, p.titulo) : ''}
+        ${galeria.length ? `<div class="galeria">${galeria.map(src => `<img src="${src}" alt="${p.titulo}" loading="lazy">`).join('')}</div>` : ''}
+        ${novedades.length ? `<section class="novedades"><h2 class="detail-subtitulo">Novedades</h2>${novedades.map(crearNovedad).join('')}</section>` : ''}`;
 }
 
 // ---------- 5. INICIO ----------
