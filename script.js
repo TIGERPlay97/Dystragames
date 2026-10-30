@@ -17,6 +17,10 @@ const enlacesPie = [
     { texto: "Contacto", href: "#contacto" }
 ];
 
+// Logos (carpeta /img/logo/). Para cambiar el logo del encabezado, cambia solo esta ruta.
+const LOGO_ENCABEZADO = "/img/logo/dystra-completo-blanco.svg";  // logo con texto
+const LOGO_SIMBOLO    = "/img/logo/dystra-simbolo-blanco.svg";   // solo el símbolo
+
 // ---------- 2. HEADER, MENÚ LATERAL Y PIE (se repiten en todas las páginas) ----------
 function construirLayout() {
     const actual = document.body.dataset.pagina;
@@ -28,7 +32,7 @@ function construirLayout() {
     if (header) header.outerHTML = `
         <header class="header-main">
             <div class="header-container">
-                <a href="/" class="logo-text">Dystra Games</a>
+                <a href="/" class="logo-link" aria-label="Dystra Games"><img class="logo-img" src="${LOGO_ENCABEZADO}" alt="Dystra Games"></a>
                 <nav class="nav-desktop" aria-label="Principal">${enlaces()}</nav>
                 <button id="btn-menu" class="btn-hamburger" aria-label="Abrir menú">
                     <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +44,7 @@ function construirLayout() {
         <div id="overlay-menu" class="menu-overlay"></div>
         <aside id="sidebar-menu" class="sidebar-drawer" aria-label="Menú">
             <div class="sidebar-header">
-                <span class="logo-text">Dystra Games</span>
+                <img class="logo-img logo-img--menu" src="${LOGO_SIMBOLO}" alt="Dystra Games">
                 <button id="btn-close-menu" class="btn-close" aria-label="Cerrar menú">&times;</button>
             </div>
             <nav class="sidebar-nav">${enlaces('class="sidebar-link" ')}</nav>
@@ -51,8 +55,11 @@ function construirLayout() {
         <footer id="contacto" class="footer-main">
             <div class="footer-container">
                 <div class="footer-brand">
-                    <span>Dystra Games Studio</span>
-                    <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
+                    <img class="footer-logo" src="${LOGO_SIMBOLO}" alt="">
+                    <div>
+                        <span>Dystra Games Studio</span>
+                        <p>© 2026 Dystra Games. Todos los derechos reservados.</p>
+                    </div>
                 </div>
                 <nav class="footer-nav" aria-label="Pie de página">
                     ${enlacesPie.map(e => `<a href="${e.href}">${e.texto}</a>`).join('')}

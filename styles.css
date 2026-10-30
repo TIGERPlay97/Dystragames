@@ -604,3 +604,25 @@ a.project-btn { display: inline-block; text-align: center; }
 }
 .bloque-texto { margin: 0; color: var(--text-muted); line-height: 1.75; }
 .bloque-imagen { width: 100%; max-width: 56rem; border: 1px solid var(--line); }
+
+/* 9. Logos (los SVG tienen un margen interno transparente; el margin-left negativo lo compensa) */
+.logo-link { display: flex; align-items: center; line-height: 0; }
+.logo-img {
+    --logo-h: 3.5rem;
+    display: block;
+    height: var(--logo-h);
+    width: auto;
+    aspect-ratio: 1 / 1;
+    margin-left: calc(var(--logo-h) * -0.07);
+}
+.logo-img--menu { --logo-h: 3rem; margin-left: calc(var(--logo-h) * -0.12); }
+
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.footer-logo { display: block; height: 3rem; width: auto; aspect-ratio: 1 / 1; opacity: 0.9; }
+
+@media (min-width: 768px) {
+    :root { --header-h: 5.5rem; }
+    .logo-img { --logo-h: 4.75rem; }
+    .logo-img--menu { --logo-h: 3rem; }
+    .footer-brand { justify-content: flex-start; }
+}
